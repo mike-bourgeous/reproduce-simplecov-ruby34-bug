@@ -3,7 +3,7 @@ module MB
     # Representation of a tone to generate or play.  Uses MB::Sound::Oscillator
     # for tone generation.
     class Tone
-      include GraphNode
+      # XXX include GraphNode
 
       # Speed of sound for wavelength calculations, in meters per second.
       SPEED_OF_SOUND = 343.0

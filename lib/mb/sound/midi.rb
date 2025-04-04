@@ -1,3 +1,6 @@
+require 'midi-message'
+require 'nibbler'
+
 module MB
   module Sound
     # Namespace for MIDI-related classes/modules/methods.
@@ -8,7 +11,5 @@ end
 
 require_relative 'midi/parameter'
 require_relative 'midi/manager'
-require_relative 'midi/voice_pool'
 require_relative 'midi/voice'
 require_relative 'midi/midi_file'
-require_relative 'midi/graph_voice'
