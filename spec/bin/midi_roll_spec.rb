@@ -9,6 +9,7 @@ RSpec.describe('bin/midi_roll.rb', :aggregate_failures) do
     #
     # See spec/simplecov_helper.rb
     lines = MB::U.remove_ansi(text.strip).lines.reject { |l| l.start_with?('TEST_IGN:') }
+    STDERR.puts MB::U.highlight({lines: lines})
 
     expect(lines.count).to eq(3)
     expect(lines[0]).to include('all_notes.mid')
