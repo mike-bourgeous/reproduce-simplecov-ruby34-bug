@@ -9,7 +9,4 @@ module MB
   end
 end
 
-require_relative 'midi/parameter'
-require_relative 'midi/manager'
-require_relative 'midi/voice'
 require_relative 'midi/midi_file'
