@@ -5,7 +5,7 @@
 require 'simplecov'
 
 puts 'This is the helper.  It begins.'
-$helper=true
+$ruby34_bug_helper=true
 
 SimpleCov.start do
   SimpleCov.command_name "#{$0} #{$$} #{Random.random_number}"
