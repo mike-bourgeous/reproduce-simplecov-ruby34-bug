@@ -73,21 +73,6 @@ module MB
         end
       end
 
-      def detune=(detune)
-        @detune = detune
-        set_frequency(get_freq)
-      end
-
-      def number=(number)
-        set_number(number)
-        set_frequency(get_freq)
-      end
-
-      # Converts this Tone to a MIDI NoteOn message from the midi-message gem.
-      def to_midi(velocity: 64, channel: -1)
-        MIDIMessage::NoteOn.new(channel, number.round, velocity)
-      end
-
       # Returns true if this Note represents a white key on a piano keyboard.
       def white_key?
         @white_key
