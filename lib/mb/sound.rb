@@ -16,7 +16,6 @@ require_relative 'sound/plot_methods'
 require_relative 'sound/playback_methods'
 require_relative 'sound/fft_methods'
 require_relative 'sound/gain_methods'
-require_relative 'sound/window_methods'
 
 module MB
   # Convenience functions for making quick work of sound.
@@ -32,7 +31,6 @@ module MB
     extend PlaybackMethods
     extend FFTMethods
     extend GainMethods
-    extend WindowMethods
 
     # Filters a sound with the given filter parameters (see
     # MB::Sound::Filter::Cookbook).
@@ -122,33 +120,12 @@ end
 require_relative 'sound/buffer_helper'
 require_relative 'sound/circular_buffer'
 
-require_relative 'sound/io_base'
-require_relative 'sound/io_output'
-require_relative 'sound/ffmpeg_output'
-require_relative 'sound/alsa_output'
-require_relative 'sound/jack_output'
-require_relative 'sound/null_output'
 require_relative 'sound/loopback'
 
 require_relative 'sound/oscillator'
 require_relative 'sound/tone'
 require_relative 'sound/note'
-require_relative 'sound/plot_output'
-require_relative 'sound/noise'
-require_relative 'sound/processing_matrix'
-require_relative 'sound/softest_clip'
-require_relative 'sound/complex_pan'
-require_relative 'sound/haas_pan'
-require_relative 'sound/meter'
-
-require_relative 'sound/window'
-require_relative 'sound/window_reader'
-require_relative 'sound/window_writer'
-require_relative 'sound/fft_writer'
-require_relative 'sound/multi_writer'
-require_relative 'sound/process_reader'
 
 require_relative 'sound/midi'
-require_relative 'sound/timeline_interpolator'
 
 require_relative 'sound/io_logger'
