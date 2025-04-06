@@ -25,4 +25,4 @@ jobs:
         run: |
           sudo apt update
           sudo apt install expect gdb
-          bundle exec ./ruby34_bug_wrapper.rb
+          bundle exec ./ruby34_bug_wrapper.sh
