@@ -18,7 +18,7 @@ RSpec.describe('bin/midi_roll.rb', :aggregate_failures) do
 
     unless status.success?
       MB::U.headline "GDB Output"
-      STDERR.puts "#{text}"
+      puts "#{text}"
     end
   end
 end
