@@ -1,12 +1,15 @@
 # GDB script to run a Ruby process and print backtraces for each thread.
 
+
+# Display colors
+set style enabled on
+
+set debuginfod enabled on
+
 define headline
 	printf "\n\e[%sm%s\e[0m\n", $arg0, $arg1
 	printf "\e[%sm===================\e[0m\n\n", $arg0
 end
-
-# Display colors
-set style enabled on
 
 run
 
