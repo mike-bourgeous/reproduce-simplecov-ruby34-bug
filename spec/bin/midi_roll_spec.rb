@@ -1,6 +1,11 @@
 RSpec.describe('bin/midi_roll.rb', :aggregate_failures) do
   it 'can display a MIDI roll' do
-    text = `gdb --batch -x ./gdb_ruby_backtrace.gdb --args $(which ruby) bin/midi_roll.rb -r 2 -c 100 -n C3 spec/test_data/all_notes.mid 2>&1`
+    if ENV['INTERACTIVE_GDB'] == '1'
+      system("gdb -x ./gdb_ruby_backtrace.gdb --args $(which ruby) bin/midi_roll.rb -r 2 -c 100 -n C3 spec/test_data/all_notes.mid 2>&1")
+    end
+
+    # unbuffer is from the expect package and uses a pseudoterminal to make gdb print colors
+    text = `unbuffer gdb --batch -x ./gdb_ruby_backtrace.gdb --args $(which ruby) bin/midi_roll.rb -r 2 -c 100 -n C3 spec/test_data/all_notes.mid 2>&1`
     status = $?
 
     expect(status).to be_success
