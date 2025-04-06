@@ -13,7 +13,7 @@ RSpec.describe('bin/midi_roll.rb', :aggregate_failures) do
     lines = MB::U.remove_ansi(text.strip).lines.reject { |l| l.start_with?('TEST_IGN:') }
 
     unless status.success?
-      STDERR.puts MB::U.highlight({lines: lines})
+      MB::U.headline "GDB Output"
       STDERR.puts "#{text}"
     end
 
