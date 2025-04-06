@@ -1,19 +1,17 @@
 RSpec.describe('bin/midi_roll.rb', :aggregate_failures) do
   it 'can display a MIDI roll' do
-    text = `/usr/bin/valgrind --error-exitcode=77 --leak-check=full --show-reachable=yes \
-        --read-var-info=yes --track-origins=yes --track-fds=yes --num-callers=40 \
-        --malloc-fill=a5 --free-fill=5a -- \
-        bin/midi_roll.rb -r 2 -c 100 -n C3 spec/test_data/all_notes.mid 2>&1`
+    # TODO: call ruby backtrace printing functions
+    text = `printf "run\ninfo threads\nbacktrace\ncall rb_backtrace()\nexit 1\n" | gdb --args $(which ruby) bin/midi_roll.rb -r 2 -c 100 -n C3 spec/test_data/all_notes.mid 2>&1`
+    status = $?
 
-    expect($?).to be_success
+    expect(status).to be_success
 
-    # FIXME: get simplecov working in Ruby 3.4 and subprocesses, instead of crashing
-    #     munmap_chunk(): invalid pointer
-    #     Aborted (core dumped)
-    #
-    # See spec/simplecov_helper.rb
     lines = MB::U.remove_ansi(text.strip).lines.reject { |l| l.start_with?('TEST_IGN:') }
-    STDERR.puts MB::U.highlight({lines: lines})
+
+    unless status.success?
+      STDERR.puts MB::U.highlight({lines: lines})
+      STDERR.puts "#{text}"
+    end
 
     expect(lines.count).to eq(3)
     expect(lines[0]).to include('all_notes.mid')
