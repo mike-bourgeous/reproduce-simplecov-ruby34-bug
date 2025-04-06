@@ -24,5 +24,5 @@ jobs:
       - name: Run tests
         run: |
           sudo apt update
-          sudo apt install expect gdb
-          bundle exec ./ruby34_bug_wrapper.sh
+          sudo apt install expect gdb valgrind
+          VALGRIND=1 bundle exec ./ruby34_bug_wrapper.sh
