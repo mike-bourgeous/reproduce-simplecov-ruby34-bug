@@ -1,7 +1,6 @@
 RSpec.describe('bin/midi_roll.rb', :aggregate_failures) do
   it 'can display a MIDI roll' do
-    # TODO: call ruby backtrace printing functions
-    text = `printf "run\ninfo threads\nbacktrace\ncall rb_backtrace()\nexit 1\n" | gdb --args $(which ruby) bin/midi_roll.rb -r 2 -c 100 -n C3 spec/test_data/all_notes.mid 2>&1`
+    text = `gdb --batch -x ./gdb_ruby_backtrace.gdb --args $(which ruby) bin/midi_roll.rb -r 2 -c 100 -n C3 spec/test_data/all_notes.mid 2>&1`
     status = $?
 
     expect(status).to be_success
