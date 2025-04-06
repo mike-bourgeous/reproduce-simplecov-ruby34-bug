@@ -11,9 +11,14 @@ define headline
 	printf "\e[%sm===================\e[0m\n\n", $arg0
 end
 
+set $_exitcode = 42
+
 run
 
-echo
+if $_exitcode == 0
+	printf "\e[1;32mProgram ran without crashing!\e[0m\n"
+	exit 0
+end
 
 headline "35" "C thread list"
 info threads
