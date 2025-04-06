@@ -24,5 +24,5 @@ jobs:
       - name: Run tests
         run: |
           sudo apt update
-          sudo apt install expect
+          sudo apt install expect gdb
           bundle exec ./ruby34_bug_wrapper.rb
