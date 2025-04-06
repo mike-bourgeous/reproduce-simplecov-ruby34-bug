@@ -1,6 +1,10 @@
 RSpec.describe('bin/midi_roll.rb', :aggregate_failures) do
   it 'can display a MIDI roll' do
-    text = `bin/midi_roll.rb -r 2 -c 100 -n C3 spec/test_data/all_notes.mid 2>&1`
+    text = `/usr/bin/valgrind --error-exitcode=77 --leak-check=full --show-reachable=yes \
+        --read-var-info=yes --track-origins=yes --track-fds=yes --num-callers=40 \
+        --malloc-fill=a5 --free-fill=5a -- \
+        bin/midi_roll.rb -r 2 -c 100 -n C3 spec/test_data/all_notes.mid 2>&1`
+
     expect($?).to be_success
 
     # FIXME: get simplecov working in Ruby 3.4 and subprocesses, instead of crashing
